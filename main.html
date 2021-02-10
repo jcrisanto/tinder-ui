@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: auto;
+            height: 20px;
+            margin-left: -180px;
+            margin-top: -190px;
+        }
+        p{
+            font-size: 3em;
+        }
+        button { display: block; width: 192px;; padding: 5px; margin-left: auto;
+            margin-right: auto; color: white}
+        #_logoutButton{
+            position: absolute;
+            top: 5px;
+            right: 5px;
+        }
+        #_matchesButton, #_profileButton {
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+<button id="_profileButton" style="color: blue">My Profile</button>
+<button id="_matchesButton" style="color: blue">My Matches</button>
+
+<button id="_logoutButton" style="color: red">Log Out</button>
+<div>
+    <p id="_randomUserView">Loading.......</p><br><br><br>
+    <button id="_likeButton" style="background-color: green">Like</button><br>
+    <button id="_dislikeButton" style="background-color: red">Dislike</button>
+</div>
+</body>
+<script type="application/javascript" src="services/services.js"></script>
+<script type="application/javascript" src="main.js"></script>
+</html>

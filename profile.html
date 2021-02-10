@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{ width: 180px; height: 20px; border: 1px solid #999999; padding: 5px; }
+        div {
+            background-color: black;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            margin-left: -90px;
+            margin-top: -190px;
+        }
+        button{ display: block; width: 192px;; padding: 5px; margin-left: auto;
+            margin-right: auto;}
+    </style>
+</head>
+<body>
+<button id="_matchesButtton" style="color: blue">My Matches</button>
+<button id="_mainPageButton" style="color: blue">Main Page</button>
+<button id="_logoutButton" style="color: red">Log Out</button>
+<div>
+    <input type="text" placeholder="First Name" id="_firstNameInput"><br><br>
+    <input type="text" placeholder="Last Name" id="_lastNameInput"><br><br>
+    <input type="text" placeholder="Email" id="_emailInput"><br><br>
+    <input type="number" placeholder="Age" id="_ageInput"><br><br>
+
+    <button id="_updateButton">Update</button><br><br><br>
+    <button id="_deleteAccountButton" style="color: white;background-color: red">Delete My Account</button>
+</div>
+</body>
+<script type="application/javascript" src="services/services.js"></script>
+<script type="application/javascript" src="profile.js"></script>
+</html>
