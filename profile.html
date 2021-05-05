@@ -15,8 +15,16 @@
             margin-left: -90px;
             margin-top: -190px;
         }
+        .align-left{
+            width: 16px;
+            display: inline-block;
+        }
         button{ display: block; width: 192px;; padding: 5px; margin-left: auto;
             margin-right: auto;}
+        .flex-box{
+            display: inline-grid;
+            grid-template-columns: auto auto auto auto auto auto;
+        }
     </style>
 </head>
 <body>
@@ -27,7 +35,95 @@
     <input type="text" placeholder="First Name" id="_firstNameInput"><br><br>
     <input type="text" placeholder="Last Name" id="_lastNameInput"><br><br>
     <input type="text" placeholder="Email" id="_emailInput"><br><br>
-    <input type="number" placeholder="Age" id="_ageInput"><br><br>
+    <input type="number" placeholder="Age" id="_ageInput" value="18"><br><br>
+
+    <label for="_genderSelect">Gender</label>
+    <select type="number" placeholder="Gender" id="_genderSelect">
+        <option value="FEMALE">Female</option>
+        <option value="MALE">Male</option>
+    </select><br><br>
+    <input type="number" placeholder="Height" id="_heightInput" value="110"><br><br>
+    <input type="text" placeholder="City" id="_cityInput"><br><br>
+
+    <p>Favorite Animals</p>
+    <section class="flex-box">
+        <input class="align-left" type="checkbox" id="_checkDog" value="Dog">
+        <label for="_checkDog">Dog</label>
+
+        <input class="align-left" type="checkbox" id="_checkCat" value="Cat">
+        <label for="_checkCat">Cat</label>
+
+        <input class="align-left" type="checkbox" id="_checkRabbit" value="Rabbit">
+        <label for="_checkRabbit">Rabbit</label>
+
+        <input class="align-left" type="checkbox" id="_checkHamster" value="Hamster">
+        <label for="_checkHamster">Hamster</label>
+
+        <input class="align-left" type="checkbox" id="_checkParrot" value="Parrot">
+        <label for="_checkParrot">Parrot</label>
+    </section>
+
+    <p>Favorite Colors</p>
+    <section class="flex-box">
+        <input class="align-left" type="checkbox" id="_checkWhite" value="White">
+        <label for="_checkDog">White</label>
+
+        <input class="align-left" type="checkbox" id="_checkBlack" value="Black">
+        <label for="_checkCat">Black</label>
+
+        <input class="align-left" type="checkbox" id="_checkBlue" value="Blue">
+        <label for="_checkRabbit">Blue</label>
+
+        <input class="align-left" type="checkbox" id="_checkRed" value="Red">
+        <label for="_checkHamster">Red</label>
+
+        <input class="align-left" type="checkbox" id="_checkGreen" value="Green">
+        <label for="_checkParrot">Green</label>
+
+        <input class="align-left" type="checkbox" id="_checkBrown" value="Brown">
+        <label for="_checkParrot">Brown</label>
+
+        <input class="align-left" type="checkbox" id="_checkYellow" value="Yellow">
+        <label for="_checkParrot">Yellow</label>
+
+        <input class="align-left" type="checkbox" id="_checkOrange" value="Orange">
+        <label for="_checkParrot">Orange</label>
+
+        <input class="align-left" type="checkbox" id="_checkPink" value="Pink">
+        <label for="_checkParrot">Pink</label>
+    </section>
+
+    <p>Music Genres</p>
+    <section class="flex-box">
+        <input class="align-left" type="checkbox" id="_checkHipHop" value="HipHop">
+        <label for="_checkDog">HipHop</label>
+
+        <input class="align-left" type="checkbox" id="_checkRnB" value="R&B">
+        <label for="_checkRnB">R&B</label>
+
+        <input class="align-left" type="checkbox" id="_checkSoca" value="Soca">
+        <label for="_checkRabbit">Soca</label>
+
+        <input class="align-left" type="checkbox" id="_checkPop" value="Pop">
+        <label for="_checkHamster">Pop</label>
+
+        <input class="align-left" type="checkbox" id="_checkRock" value="Rock">
+        <label for="_checkParrot">Rock</label>
+
+        <input class="align-left" type="checkbox" id="_checkBlues" value="Blues">
+        <label for="_checkParrot">Blues</label>
+    </section>
+    <br><br>
+
+    <label for="_genderLimitsSelect">Interested in</label>
+    <select type="number" placeholder="Gender" id="_genderLimitsSelect">
+        <option value="FEMALE">Female</option>
+        <option value="MALE">Male</option>
+        <option value="MALE,FEMALE">Male and Female</option>
+    </select><br><br>
+
+    <input type="number" placeholder="Min Age Limit" id="_minAgeInput" min="18"><br><br>
+    <input type="number" placeholder="Max Age Limit" id="_maxAgeInput" max="60"><br><br>
 
     <button id="_updateButton">Update</button><br><br><br>
     <button id="_deleteAccountButton" style="color: white;background-color: red">Delete My Account</button>

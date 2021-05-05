@@ -1,6 +1,26 @@
 redirectIfNotLoggedIn();
 let userForLikeId;
-getRandomUser();
+httpClient.get('/users/info')
+    .then((response) => {
+        if(response.status === 401){
+            localStorage.clear();
+            window.location.href = 'login.html';
+        } else if(response.status === 200){
+            response.text()
+                .then((data) => {
+                    const user = JSON.parse(data);
+                    if(user.isAdmin){
+                        _adminButton.style.visibility = 'visible';
+                    }
+                });
+            getRandomUser();
+            return;
+        }
+        notifyOfError();
+    });
+//getRandomUser();
+
+
 
 _logoutButton.addEventListener('click', () => {
     localStorage.clear();
@@ -41,6 +61,10 @@ _profileButton.addEventListener('click', () => {
     window.location.href = 'profile.html';
 });
 
+_adminButton.addEventListener('click', () => {
+    window.location.href = 'admin.html';
+});
+
 
 function getRandomUser(){
     httpClient.get('/users/random')
@@ -53,6 +77,7 @@ function getRandomUser(){
                         userForLikeId = user.id;
                         return;
                     } else if(response.status === 400){
+                        _randomUserView.innerText = data;
                         alert(data);
                         return;
                     }

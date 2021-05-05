@@ -1,73 +1,65 @@
+console.log(window.location.href);
+const id = window.location.href.split('?')[1];
 redirectIfNotLoggedIn();
 let user = {};
-httpClient.get('/users/info')
+httpClient.get('/admin/users/'+id)
     .then((response) => {
-    if(response.status === 401){
-        localStorage.clear();
-        window.location.href = 'login.html';
-    } else if(response.status === 200){
-        response.text()
-            .then((data) => {
-                user = JSON.parse(data);
-                console.log(user);
-                _firstNameInput.value = user.firstName;
-                _lastNameInput.value = user.lastName;
-                _emailInput.value = user.email;
-                _ageInput.value = user.age;
-                _genderSelect.value = user.gender;
-                _heightInput.value = user.height;
-                _cityInput.value = user.city;
+        if(response.status === 401){
+            localStorage.clear();
+            window.location.href = 'login.html';
+        } else if(response.status === 200){
+            response.text()
+                .then((data) => {
+                    user = JSON.parse(data);
+                    console.log(user);
+                    _firstNameInput.value = user.firstName;
+                    _lastNameInput.value = user.lastName;
+                    _emailInput.value = user.email;
+                    _ageInput.value = user.age;
+                    _genderSelect.value = user.gender;
+                    _heightInput.value = user.height;
+                    _cityInput.value = user.city;
 
-                _checkDog.checked = user.favouriteAnimals.includes('Dog');
-                _checkCat.checked = user.favouriteAnimals.includes('Cat');
-                _checkRabbit.checked = user.favouriteAnimals.includes('Rabbit');
-                _checkHamster.checked = user.favouriteAnimals.includes('Hamster');
-                _checkParrot.checked = user.favouriteAnimals.includes('Parrot');
+                    _checkDog.checked = user.favouriteAnimals.includes('Dog');
+                    _checkCat.checked = user.favouriteAnimals.includes('Cat');
+                    _checkRabbit.checked = user.favouriteAnimals.includes('Rabbit');
+                    _checkHamster.checked = user.favouriteAnimals.includes('Hamster');
+                    _checkParrot.checked = user.favouriteAnimals.includes('Parrot');
 
-                _checkWhite.checked = user.favouriteColours.includes('White');
-                _checkBlack.checked = user.favouriteColours.includes('Black');
-                _checkBlue.checked = user.favouriteColours.includes('Blue');
-                _checkRed.checked = user.favouriteColours.includes('Red');
-                _checkGreen.checked = user.favouriteColours.includes('Green');
-                _checkBrown.checked = user.favouriteColours.includes('Brown');
-                _checkYellow.checked = user.favouriteColours.includes('Yellow');
-                _checkOrange.checked = user.favouriteColours.includes('Orange');
-                _checkPink.checked = user.favouriteColours.includes('Pink');
+                    _checkWhite.checked = user.favouriteColours.includes('White');
+                    _checkBlack.checked = user.favouriteColours.includes('Black');
+                    _checkBlue.checked = user.favouriteColours.includes('Blue');
+                    _checkRed.checked = user.favouriteColours.includes('Red');
+                    _checkGreen.checked = user.favouriteColours.includes('Green');
+                    _checkBrown.checked = user.favouriteColours.includes('Brown');
+                    _checkYellow.checked = user.favouriteColours.includes('Yellow');
+                    _checkOrange.checked = user.favouriteColours.includes('Orange');
+                    _checkPink.checked = user.favouriteColours.includes('Pink');
 
-                _checkHipHop.checked = user.musicGenres.includes('Hip Hop');
-                _checkRnB.checked = user.musicGenres.includes('R&B');
-                _checkSoca.checked = user.musicGenres.includes('Soca');
-                _checkPop.checked = user.musicGenres.includes('Pop');
-                _checkRock.checked = user.musicGenres.includes('Rock');
-                _checkBlues.checked = user.musicGenres.includes('Blues');
+                    _checkHipHop.checked = user.musicGenres.includes('Hip Hop');
+                    _checkRnB.checked = user.musicGenres.includes('R&B');
+                    _checkSoca.checked = user.musicGenres.includes('Soca');
+                    _checkPop.checked = user.musicGenres.includes('Pop');
+                    _checkRock.checked = user.musicGenres.includes('Rock');
+                    _checkBlues.checked = user.musicGenres.includes('Blues');
 
-                _genderLimitsSelect.value = user.genderLimits.join(',');
-                _minAgeInput.value = user.ageLimits[0];
-                _maxAgeInput.value = user.ageLimits[1];
-            });
-        return;
-    }
-    notifyOfError();
-});
-
-_matchesButtton.addEventListener('click', () => {
-    window.location.href = 'matches.html';
-});
-
-_logoutButton.addEventListener('click', () => {
-    localStorage.clear();
-    window.location.href = 'login.html';
-});
+                    _genderLimitsSelect.value = user.genderLimits.join(',');
+                    _minAgeInput.value = user.ageLimits[0];
+                    _maxAgeInput.value = user.ageLimits[1];
+                });
+            return;
+        }
+        notifyOfError();
+    });
 
 _mainPageButton.addEventListener('click', () => {
     window.location.href = 'main.html';
 });
 
 _deleteAccountButton.addEventListener('click', () => {
-    httpClient.delete('/users')
+    httpClient.delete('/admin', {id})
         .then((response) => {
-            localStorage.clear();
-            window.location.href = 'login.html';
+            window.location.href = 'admin.html';
         });
 });
 
@@ -172,10 +164,10 @@ _updateButton.addEventListener('click', () => {
         return;
     }
 
-    const requestBody = {firstName, lastName, email, age, gender, height, city,
+    const requestBody = {id,firstName, lastName, email, age, gender, height, city,
         favouriteAnimals, favouriteColours, musicGenres, genderLimits, ageLimits: [minAge, maxAge], password: 'user.password' };
 
-    httpClient.put('/users', requestBody)
+    httpClient.put('/admin', requestBody)
         .then((response) => {
             if(response.status === 400){
                 response.text()
@@ -192,4 +184,3 @@ _updateButton.addEventListener('click', () => {
             notifyOfError();
         });
 });
-

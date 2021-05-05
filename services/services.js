@@ -43,7 +43,9 @@ const httpClient = {
         return fetch(url, {
             method: 'DELETE',
             headers: new Headers({
-                'Authorization': localStorage.getItem('token') || ''
+                'Authorization': localStorage.getItem('token') || '',
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             })
         })
     }
